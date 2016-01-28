@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app='starcraft'>
+	<head>
+		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js'></script>
+		<script src = 'main.js'></script>
+		<script src = 'factory.js'></script>
+		<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+		<link type= 'text/css' rel = 'stylesheet' href = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css'>
+		<link type = 'text/css' rel = 'stylesheet' href = 'main.css'>
+	</head>
+	<body ng-controller = 'masterController'>
+
+		<div class = 'header'>
+			<div class = 'header-image'>
+			<img src = 'images/header.jpg'/>
+			</div>
+		</div>
+		<h1>Starcraft <br /> Rankings</h1>
+
+		<table class = 'table table-striped'>
+
+			<tr>
+
+				<th>{{rankings.cols[0]}}</th>
+				<th>{{rankings.cols[1]}}</th>
+				<th>{{rankings.cols[2]}}</th>
+				<th>{{rankings.cols[3]}}</th>
+				<th>{{rankings.cols[4]}}</th>
+				<th>{{rankings.cols[5]}}</th>
+				
+			</tr>
+
+			<tr ng-repeat = "player in players | limitTo : 10 : userValue">
+				<td>{{player[0]}}</td>
+				<td>{{player[1]}}</td>
+				<td>{{player[2]}}</td>
+				<td>{{player[3]}}</td>
+				<td>{{player[4]}}</td>
+				<td>{{player[5]}}</td>
+			</tr>
+
+		</table>
+
+		<button ng-click = 'userValueMinus()'>last</button>
+		<button ng-click = 'userValuePlus()'>next</button>
+
+
+
+	</body>
+</html>
