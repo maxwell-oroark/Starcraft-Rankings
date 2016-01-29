@@ -2,9 +2,10 @@
 <html ng-app='starcraft'>
 	<head>
 		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js'></script>
+		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-animate.js'></script>
 		<script src = 'main.js'></script>
 		<script src = 'factory.js'></script>
-		<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
 		<link type= 'text/css' rel = 'stylesheet' href = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css'>
 		<link type = 'text/css' rel = 'stylesheet' href = 'main.css'>
 	</head>
@@ -14,9 +15,37 @@
 			<div class = 'header-image'>
 			<img src = 'images/header.jpg'/>
 			</div>
+			<div ng-class = "{active : clicked, hiddenSlideMenu : !active}" class = 'slideMenu'>
+				<div id = 'filter-access-button' ng-click = 'slideOut()'><span class = 'vertical-text'>A<br/>c<br/>c<br/>e<br/>s<br/>s <br/>  F<br/>i<br/>l<br/>t<br/>e<br/>r</span></div>
+				<div ng-hide = '!clicked' class = "filtersContainer">
+				<h3 class = 'stats'>R.A.C.E</h3>
+				<select class='stats' ng-model = 'filter.race'>
+					<option value = ''>All</option>
+					<option value = 'Zerg'>Zerg</option>
+					<option value = 'Terran'>Terran</option>
+					<option value = 'Protoss'>Protoss</option>
+				</select>
+				<h3 class = 'stats'>O.R.I.G.I.N</h3>	
+				<select class='stats' ng-model = 'filter.origin'>
+					<option value = ''>All</option>
+					<option value = 'Europe'>Europe</option>
+					<option value = 'America'>America</option>
+					<option value = 'Korea'>Korea</option>
+				</select>
+				<h3 class = 'stats'>No. R.E.S.U.L.T.S</h3>	
+				<select class='stats' ng-model = 'totalResults'>
+					<option value = '20'>20</option>
+					<option value = '30'>30</option>
+					<option value = '40'>40</option>
+				</select>
+				</div>
+			</div>
 		</div>
 		<h1>Starcraft <br /> Rankings</h1>
 
+	
+
+	
 		<table class = 'table table-striped'>
 
 			<tr>
@@ -30,7 +59,11 @@
 				
 			</tr>
 
-			<tr ng-repeat = "player in players | limitTo : 10 : userValue">
+			<tr ng-repeat = "player in players 
+			| filter : filter.race : player[3] 
+			| filter : filter.origin : player[2]
+			| limitTo : totalResults : userValue"> 
+				
 				<td>{{player[0]}}</td>
 				<td>{{player[1]}}</td>
 				<td>{{player[2]}}</td>
@@ -41,8 +74,8 @@
 
 		</table>
 
-		<button ng-click = 'userValueMinus()'>last</button>
-		<button ng-click = 'userValuePlus()'>next</button>
+		<button ng-click = 'userValueMinus()'> last </button>
+		<button ng-click = 'userValuePlus()'> next </button>
 
 
 

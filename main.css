@@ -2,20 +2,70 @@ h1 {
 	position: absolute;
 	top: 25px;
 	left: 10px;
-	font-family: 'Indie Flower', cursive;
+	font-family: 'Press Start 2P', cursive;
 	text-align: center;
 	color: white;
-	font-size: 60pt;
+	font-size: 40pt;
 }
 
 .header {
 	width: 100%;
 	height: 300px;
 	overflow:hidden;
+	margin-bottom:5px;
 }
 
 
 .header-image {
 	position:relative;
+	width: 100%;
 	left: -100px;
 }
+
+.hiddenSlideMenu {
+	position: absolute;
+	width: 400px;
+	height: 300px;
+	right: -350px;
+	top: 0px;
+	background-color: #bdc3c7;
+	transition: all 0.5s ease-in-out
+
+}
+
+.active {
+	transition: all 0.5s ease-in-out;
+	right:0px;
+	background-color: #bdc3c7;
+
+}
+
+#filter-access-button {
+	font-family: 'Press Start 2P';
+
+	display: flex;
+	align-content: middle;
+	float:left;
+	height: 300px;
+	width: 50px;
+	background-color: #e74c3c;
+	color: #ecf0f1;
+	padding-top:10px;
+	padding-left: 15px;
+	padding-bottom:10px;
+}
+
+/*.vertical-text {
+	transform: rotate(90deg);
+	transform-origin: left top 0;
+}
+*/
+
+.stats {
+	margin: 10px;
+	display: block;
+	font-family: 'Press Start 2P';
+	font-size: medium;
+	text-align: center;
+}
+
